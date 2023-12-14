@@ -6,7 +6,7 @@ class Note {
     }
     static width = 50;
     static height = 13.5;
-    static speed = 1;
+    static speed = 14;
 
     draw(ctx) {
         ctx.fillStyle = 'red';
@@ -29,33 +29,9 @@ class Note {
 }
 
 class NoteType extends Note {
-    constructor(key) {
-        let superValue = 0;
-        switch (key) {
-            case 0:
-                superValue = 0;
-                break;
-            case 1:
-                superValue = 50;
-                break;
-            case 2:
-                superValue = 100;
-                break;
-            case 3:
-                superValue = 150;
-                break;
-            case 4:
-                superValue = 200;
-                break;
-            case 5:
-                superValue = 250;
-                break;
-            default:
-                // Handle default case or other values here
-                break;
-        }
-        super(superValue);
-        this.key = key; // Assign the key value to the NoteType object
+    constructor(key, x) {
+        super(x);
+        this.key = key;
     }
 }
 
@@ -67,12 +43,22 @@ function songlist() {
     }
 }
 songlist();
-const timeStamp = Install_NoteData();
-const time = 100;
-const notes = [];
-for (i = 0; i < timeStamp.length; i++) {
-    notes.push(new NoteType(Math.floor(Math.random() * 6)));
-}
+const timeStamp = Install_NoteData(3);
+const time = 30;
+const notes = [
+    new NoteType('a', 0),
+    new NoteType('s', 50),
+    new NoteType('a', 0),
+    new NoteType('j', 150),
+    new NoteType('l', 250),
+    new NoteType('k', 200),
+    new NoteType('a', 0),
+    new NoteType('d', 100),
+    new NoteType('s', 50),
+    new NoteType('k', 200),
+    new NoteType('j', 150),
+    new NoteType('l', 250)
+];
 let currentNoteIndex = 0;
 
 let canvas = document.getElementById('gamePan');
@@ -85,7 +71,8 @@ function startgame() {
     document.getElementById('mainscr').style.display = 'none';
     document.getElementById('gamescr').style.display = 'block';
 
-    setInterval(gameLoop, 10); // 1초마다 gameLoop() 함수 호출
+
+    setInterval(gameLoop, 100); // 1초마다 gameLoop() 함수 호출
 }
 
 function gameLoop() {
@@ -97,8 +84,8 @@ function gameLoop() {
     disPlayTime();
 
     for (let i = 0; i < timeStamp.length; i++) {
-        console.log('h' + timeStamp[i])
-        if (timeStamp[i] === seconds) {
+        if (timeStamp[i] > seconds - 50 && timeStamp[i] < seconds + 50) {
+            console.log(timeStamp[i]+" "+(seconds - 50))
             notes[currentNoteIndex].fall();
             currentNoteIndex++;
         }
@@ -112,7 +99,6 @@ function gameLoop() {
             note.draw(ctx);
 
             if (note.isNoteReachedEnd(canvas)) {
-                // note = null;
                 console.log(`Note ${note.key} reached the end!`);
             }
         }
@@ -122,8 +108,8 @@ function gameLoop() {
 function disPlayTime() {
     const currTime = Date.now();
     const playTime = currTime - startTime;
-    seconds = playTime
-    timeDisplay.innerText = `Play Time: ${seconds / 1000} seconds`;
+    seconds = Math.floor(playTime / 100) * 100;
+    timeDisplay.innerText = `Play Time: ${seconds} seconds`;
 }
 
 
