@@ -1,4 +1,4 @@
-function Install_NoteData(t) { // t = 낙하시간
+function Install_NoteData(t) { // t = 낙하속도
 
     const MainTimeLineArr = [] // Main per 2.2sec ( 2200 ms )
     const SubTimeLineArr = [] // Sub per 0.55sec ( 550 ms )
@@ -125,7 +125,13 @@ function Install_NoteData(t) { // t = 낙하시간
     }
 
     // Sort
+    for (let i = 0; i < SubTimeLineArr.length; i++) {
+        MainTimeLineArr.push(SubTimeLineArr[i])
+    }
+    for (let i = 0; i < Sub2TimeLineArr.length; i++) {
+        MainTimeLineArr.push(Sub2TimeLineArr[i])
+    }
     MainTimeLineArr.sort(Sort_Asc)
-    SubTimeLineArr.sort(Sort_Asc)
-    Sub2TimeLineArr.sort(Sort_Asc)
+    
+    return MainTimeLineArr
 }
