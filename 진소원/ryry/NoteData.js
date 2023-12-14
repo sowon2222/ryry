@@ -131,6 +131,9 @@ function Install_NoteData(t) { // t = 낙하속도
     for (let i = 0; i < Sub2TimeLineArr.length; i++) {
         MainTimeLineArr.push(Sub2TimeLineArr[i])
     }
+    for (let i = 0; i < MainTimeLineArr.length; i++) {
+        MainTimeLineArr[i] = MainTimeLineArr[i]*10
+    }
     MainTimeLineArr.sort(Sort_Asc)
     
     return MainTimeLineArr
