@@ -1,9 +1,9 @@
-function Install_NoteData(t) { // t = 낙하속도
+function Install_NoteData() { // t = 낙하속도
 
     const MainTimeLineArr = [] // Main per 2.2sec ( 2200 ms )
     const SubTimeLineArr = [] // Sub per 0.55sec ( 550 ms )
     const Sub2TimeLineArr = [] // Sub2 per 0.1sec or 0.4sec ( 100ms / 400ms )
-    const InitTime = t;
+    const InitTime = -3;
 
     function Sort_Asc(tempA, tempB) { // Ascending Sort
         if (tempA > tempB) {
@@ -132,8 +132,9 @@ function Install_NoteData(t) { // t = 낙하속도
         MainTimeLineArr.push(Sub2TimeLineArr[i])
     }
     for (let i = 0; i < MainTimeLineArr.length; i++) {
-        MainTimeLineArr[i] = MainTimeLineArr[i]*10
+        MainTimeLineArr[i] = Math.floor(MainTimeLineArr[i]*1000);
     }
+
     MainTimeLineArr.sort(Sort_Asc)
     
     return MainTimeLineArr
