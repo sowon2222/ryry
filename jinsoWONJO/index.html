@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+</head>
+<Style>
+    #perfect {
+        color: purple;
+    }
+
+    #good {
+        opacity: 0;
+        color: green;
+    }
+
+    #bad {
+        opacity: 0;
+        color: red;
+    }
+
+    #miss {
+        opacity: 0;
+        color: gray;
+    }
+
+    .text {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 100px;
+    }
+
+    #score {
+        position: absolute;
+        left: 50%;
+    }
+
+    .end-container {
+        display: none;
+        position: absolute;
+        left: 560px;
+        top: 150px;
+        height: 94vh;
+        width: 565px;
+    }
+
+    .end-container h2 {
+        font-size: 50px;
+    }
+</Style>
+<link rel="stylesheet" href="game.css">
+
+<body>
+
+
+    <div class="track-container"></div>
+
+    <div class="key-container">
+        <div class="key KEY-A">
+            <span>A</span>
+        </div>
+        <div class="key KEY-S">
+            <span>S</span>
+        </div>
+        <div class="key KEY-D">
+            <span>D</span>
+        </div>
+        <div class="key KEY-J">
+            <span>J</span>
+        </div>
+        <div class="key KEY-K">
+            <span>K</span>
+        </div>
+        <div class="key KEY-L">
+            <span>L</span>
+        </div>
+    </div>
+
+    <div class="end-container">
+        <h2 id="perfectcnt">perfect :</h2>
+        <h2 id="goodcnt">good : </h2>
+        <h2 id="badcnt">bad : </h2>
+        <h2 id="misscnt">miss :</h2>
+        <h2 id="scorecnt">score : </h2>
+    </div>
+    <div id="jud">
+        <h2 id="perfect" class="text"></h2>
+        <h2 id="good" class="text"></h2>
+        <h2 id="bad" class="text"></h2>
+        <h2 id="miss" class="text"></h2>
+    </div>
+    <div id="score">
+        <h2>socre : 0</h2>
+    </div>
+
+    <audio style="display: none;" id="myAudio" controls>
+        <source src="1_Highscore.mp3" type="audio/mp3">    
+    </audio>
+</body>
+
+</html>
+<script src="NoteData.js"></script>
+<script src="game.js"></script>
