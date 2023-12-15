@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+
+}
+
+.key-container {
+
+    display: flex;
+    gap: 10px;
+}
+
+.key-container div {
+    width: 80px;
+    height: 50px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.key-container div.pressed {
+    background-color: #00f;
+    color: #fff;
+}
+
+
+
+@keyframes moveDown {
+    0% {
+        top: 0px;
+    }
+    95% {}
+    to {
+        top: 1000px;
+    }
+}
+
+.note {
+
+    width: 80px;
+    height: 10px;
+    background-color: #ff0000;
+  
+    position: absolute;
+    cursor: pointer;
+}
